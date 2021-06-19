@@ -8,4 +8,4 @@
 
 # Allowed Bash Script
 !default.sh
-!nodefault.sh
+!notdefault.sh
