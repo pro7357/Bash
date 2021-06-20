@@ -9,3 +9,4 @@
 # Allowed Bash Script
 !default.sh
 !notdefault.sh
+!alias_hackernews.sh
