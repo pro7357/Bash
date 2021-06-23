@@ -34,24 +34,24 @@ main(){
     index=$(wc -l /tmp/hnindex.txt 2>/dev/null | awk '{print $1}')
 
     IFS=$'\n'; for line in $list; do
-        new=$(printf "$line" | anew /tmp/hnindex.txt)
+        new=$(printf '%s' "$line" | anew /tmp/hnindex.txt)
         if [[ ! -z "$new" ]]; then
             (( index++ ))
-            printf "${pblue}$index. ${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})\n"
+            echo -e "${pblue}$index. ${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})"
         fi
     done
 }
 
 pick(){
     new=$(awk -v num=$1 'FNR==num' /tmp/hnindex.txt)
-    printf "https://news.ycombinator.com/item?id=${new##* }" | clipster -c
-    printf "${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})\n"
+    printf '%s' "https://news.ycombinator.com/item?id=${new##* }" | clipster -c
+    echo -e "${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})"
 }
 
 all(){
     IFS=$'\n'; for new in $(</tmp/hnindex.txt); do
         (( index++ ))
-        printf "${pblue}$index. ${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})\n"
+        echo -e "${pblue}$index. ${white}[${bblue}${new% *}${white}](${orange}https://news.ycombinator.com/item?id=${new##* }${white})"
     done
 }
 
