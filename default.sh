@@ -11,15 +11,17 @@ With no FILE, or when FILE is -, read standard input.
 E0F
 }
 
-_main(){
+_menu(){
     #see notdefault.sh for more complex options.
     if [[ $1 == '-h' || $1 == --help ]]; then
         _help
-    elif [[ -z $1 || "${@:(-1)}" == '-' ]]; then
-        echo "see notdefault.sh"
+    elif [[ "${@:(-1)}" == '-' ]]; then
+        echo "_pipe"
+    elif [[ -z $1 ]]; then
+        echo "_auto"
     else
         echo "$@"
     fi
 }
 _source(){ :;}
-[[ $0 == "$BASH_SOURCE" ]] && _main "$@" || _source
+[[ $0 == "$BASH_SOURCE" ]] && _menu "$@" || _source
