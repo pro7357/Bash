@@ -55,7 +55,7 @@ all(){
     done
 }
 
-_main(){
+_menu(){
     #see notdefault.sh for more complex options.
     if [[ $1 == '-h' || $1 == --help ]]; then
         _help
@@ -70,5 +70,4 @@ _main(){
     fi
 }
 
-_source(){ :;}
-[[ $0 == "$BASH_SOURCE" ]] && _main "$@" || _source
+[[ $0 == "$BASH_SOURCE" ]] && _menu "$@"

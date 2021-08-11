@@ -12,7 +12,7 @@ With no FILE, or when FILE is -, read standard input.
 E0F
 }
 
-_main(){
+_menu(){
     #main
     local directory
     local pattern
@@ -87,5 +87,5 @@ E0F
 }
 
 _source(){ :;}
-[[ $0 == "$BASH_SOURCE" ]] && _main "$@" || _source
+[[ $0 == "$BASH_SOURCE" ]] && _menu "$@" || _source
 #https://github.com/helpermethod/bash-specs/blob/master/src/bash-specs
